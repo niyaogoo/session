@@ -1,0 +1,23 @@
+management:
+  security:
+    enabled: false
+
+security:
+  basic:
+    enabled: false
+
+server:
+  port: 8002
+
+spring:
+  application:
+    name: nysession
+#  redis:
+    #host: 139.196.240.189:7000, 139.196.240.189:7001, 139.196.240.189:7002, 139.196.240.189:7003, 139.196.240.189:7004, 139.196.240.189:7005
+    #port: 6379
+
+
+
+
+
+

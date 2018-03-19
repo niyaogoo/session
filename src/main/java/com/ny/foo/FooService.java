@@ -15,7 +15,7 @@ public class FooService {
         Foo foo = Feign.builder()
                 .options(new Request.Options(1000, 10000))
                 .target(Foo.class, "http://localhost:8001");
-        ExecutorService pool = Executors.newFixedThreadPool(10000);
+        ExecutorService pool = Executors.newFixedThreadPool(1000);
         final AtomicInteger total = new AtomicInteger();
         IntStream.range(0, 1000).forEach(e -> {
             pool.execute(() -> {

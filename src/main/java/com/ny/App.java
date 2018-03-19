@@ -15,6 +15,7 @@ import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplicat
 import org.springframework.boot.context.embedded.EmbeddedServletContainerFactory;
 import org.springframework.boot.context.embedded.tomcat.TomcatConnectorCustomizer;
 import org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainerFactory;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -28,6 +29,7 @@ import java.util.concurrent.TimeUnit;
 
 @EnableRedisHttpSession
 @SpringBootApplication
+@EnableEurekaClient
 @Configuration
 public class App {
 
@@ -47,7 +49,7 @@ public class App {
     @Bean
     public EmbeddedServletContainerFactory tomcatFactory() {
         TomcatEmbeddedServletContainerFactory tomcatFactory = new TomcatEmbeddedServletContainerFactory();
-        tomcatFactory.setPort(8001);
+        //tomcatFactory.setPort(8001);
         tomcatFactory.addConnectorCustomizers(new TomcatConnector());
         return tomcatFactory;
     }
@@ -59,7 +61,7 @@ public class App {
             ProtocolHandler handler = connector.getProtocolHandler();
             if(handler instanceof AbstractProtocol) {
                 AbstractProtocol protocol = (AbstractProtocol)handler;
-                protocol.setMaxConnections(5);
+                protocol.setMaxConnections(500);
                 protocol.setMaxThreads(5);
                 protocol.setAcceptCount(5);
                 protocol.setAcceptorThreadCount(5);

@@ -1,6 +1,7 @@
 package com.ny.controller;
 
 import com.ny.config.TomcatMetrics;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -48,6 +49,5 @@ public class IndexController {
         System.out.print("value: " + cookie.getValue());
         System.out.println();
     }
-
 
 }
